@@ -8,9 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="911.0" prefWidth="1238.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deskind.mnemocardsfx.tcharts.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="911.0" prefWidth="1238.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deskind.mnemocardsfx.tcharts.FXMLController">
     <children>
-        <Button fx:id="chooseFileBtn" layoutX="41.0" layoutY="162.0" onAction="#handleButtonAction" text="Choose the file" />
+        <Button fx:id="ChooseFileBtn" layoutX="41.0" layoutY="162.0" onAction="#handleChooseFileBtn" text="Choose the file" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <LineChart fx:id="lineChart" layoutX="19.0" layoutY="230.0" prefHeight="656.0" prefWidth="1191.0">
         <xAxis>

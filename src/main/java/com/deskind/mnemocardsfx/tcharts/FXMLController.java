@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,15 +41,32 @@ public class FXMLController implements Initializable {
     private TextField brokerInterest;
 
     @FXML
-    void handleButtonAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
+    void handleChooseFileBtn(ActionEvent event) {
+        
+        String d = depositField.getText();
+        String b = betField.getText();
+        String i = brokerInterest.getText();
+        
+        if(d.equals("")||b.equals("")||i.equals("")){
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Alarm!!!");
+            alert.setHeaderText("Заполните все поля!");
 
-        lineChart.setTitle("Profit Chart");
-        lineChart.setVisible(true);
-        lineChart.getData().add(CsvUtil.getCsv(file.getPath(), Double.parseDouble(depositField.getText()), 
-                                                               Double.parseDouble(betField.getText()),
-                                                               Double.parseDouble(brokerInterest.getText()))); 
+            alert.showAndWait();
+        }else{
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(new Stage());
+
+            lineChart.setTitle("Profit Chart");
+            lineChart.setVisible(true);
+            Double deposit = Double.parseDouble(d);
+            Double betSize = Double.parseDouble(b);
+            Double brokerInterest = Double.parseDouble(i);
+
+            lineChart.getData().add(CsvUtil.getCsv(file.getPath(),deposit, betSize, brokerInterest));
+        }
+        
+         
     }
     
     
@@ -55,5 +74,6 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lineChart.setVisible(false);
+        
     }    
 }
