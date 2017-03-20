@@ -45,8 +45,8 @@ public class FXMLController implements Initializable {
 
         lineChart.setTitle("Profit Chart");
         lineChart.setVisible(true);
-        lineChart.getData().add(CsvUtil.getCsv(file.getPath(), Integer.parseInt(depositField.getText()), 
-                                                               Integer.parseInt(betField.getText()),
+        lineChart.getData().add(CsvUtil.getCsv(file.getPath(), Double.parseDouble(depositField.getText()), 
+                                                               Double.parseDouble(betField.getText()),
                                                                Double.parseDouble(brokerInterest.getText()))); 
     }
     
